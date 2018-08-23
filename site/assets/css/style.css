@@ -22,10 +22,16 @@
   display: block;
 }
 
-/* Style links on mouse-over */
-.sidebar a:hover {
-  color: #f1f1f1;
+
+.active {
+  background-color: #d5e1df;
+
 }
+
+.btn:hover {
+  color: white;
+}
+  
 
 /* Style the main content */
 .main {
@@ -53,6 +59,6 @@
 
 /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
 @media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+  .sidebar {padding-top: 12px;}
+  .sidebar a {font-size: 10px;}
 }
