@@ -1,113 +1,202 @@
 <head>
-  <!-- Plotly.js -->
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
-</head>
-
-<body>
+	<!-- Plotly.js -->
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="Styles.css">
+  </head>
   
-  <div id="spider"><!-- Plotly chart will be drawn inside this DIV --></div>
-  <script>
-    data = [{
-    name: 'High income',
-    type: 'scatterpolar',
-    r: ['93.35714286', '90.17857143', '74.10714286', '76.78571429', '42.41071429', '78.48214286', '62.32142857', '93.35714286'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    },
-    {
-    name: 'Low income',
-    type: 'scatterpolar',
-    r: ['86.5862068965517', '75.0689655172413', '65.5172413793103', '53.103448275862', '7.75862068965517', '57.5172413793103', '51.0344827586206', '86.5862068965517'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    },
-    {
-    name: 'Lower middle income',
-    type: 'scatterpolar',
-    r: ['90.2264150943396', '76.9811320754716', '64.1509433962264', '59.6226415094339', '27.3584905660377', '58.4150943396226', '44.7169811320754', '90.2264150943396'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    },
-    {
-    name: 'Upper middle income',
-    type: 'scatterpolar',
-    r: ['93.3529411764706', '86.8627450980392', '68.1372549019607', '69.8039215686274', '30.8823529411764', '66.9019607843137', '57.0588235294117', '93.3529411764706'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    }]
-
-    region_data = [{
-    name: 'East Asia & Pacific',
-    type: 'scatterpolar',
-    r: ['95.52', '82.6', '65', '48.8', '19', '58.68', '44', '95.52'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    },
-    {
-    name: 'Europe & Central Asia',
-    type: 'scatterpolar',
-    r: ['99.28', '100', '74', '79.2', '33', '77', '59.2', '99.28'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    },
-    {
-    name: 'High income: OECD',
-    type: 'scatterpolar',
-    r: ['99.71875', '98.75', '85.9375', '86.25', '52.34375', '90.46875', '75.3125', '99.71875'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    },
-    {
-    name: 'Latin America & Caribbean',
-    type: 'scatterpolar',
-    r: ['97.09375', '97.5', '67.1875', '76.875', '40.625', '67.75', '60.625', '97.09375'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    },
-    {
-    name: 'Middle East & North Africa',
-    type: 'scatterpolar',
-    r: ['65.95', '43', '41.25', '59', '20', '46.4', '24', '65.95'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    },
-    {
-    name: 'South Asia',
-    type: 'scatterpolar',
-    r: ['89.875', '57.5', '75', '45', '9.375', '39.375', '85', '89.875'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    },
-    {
-    name: 'Sub-Saharan Africa',
-    type: 'scatterpolar',
-    r: ['86.7234042553191', '76', '66.4893617021276', '55.3191489361702', '18.6170212765957', '61.127659574468', '45.9574468085106', '86.7234042553191'],
-    theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
-    }]
-
-    layout = {
-    polar: {
-        radialaxis: {
-        visible: true,
-        range: [0, 100]
-        }
-    },
-    showlegend: true
-    }
-
-    Plotly.plot("spider", data, layout)
-
-    function getData(dataset) {
-      switch (dataset) {
-        case "data":
-          Plotly.newPlot("spider", data, layout)
-          break;
-        case "region_data":
-          Plotly.newPlot("spider", region_data, layout)
-          break;
-        default:
-          Plotly.plot("spider", data, layout)
-          break;
-  }
-      
-    }
-
-  </script>
-
-  <select id="selDataset" onchange="getData(this.value)">
-    <option value="data">Income</option>
-    <option value="region_data">Region</option>
-  </select>
+  <body>
+	
+	<nav class="all-nav">
+		<ul>
+				<li class="dropdown">
+						<a href="" class="drop-button">Accessing institutions</a><i class="down"></i>
+					<div class="dropdown-content">
+						<a>Does the constitution contain a clause on nondiscrimination?</a>
+						<a>If there is a nondiscrimination clause in the constitution, does it explicitly mention sex or gender? </a>
+						<a>Does the constitution contain a clause on equality?</a>
+						<a>Is customary law recognized as a valid source of law under the constitution?</a>
+						<a>If customary law is recognized as a valid source of law under the constitution, is it invalid if it violates constitutional provisions on nondiscrimination or equality?</a>
+						<a>Is personal law recognized as a valid source of law under the constitution?</a>
+						<a>If personal law is recognized as a valid source of law under the constitution, is it invalid if it violates constitutional provisions on nondiscrimination or equality?</a>
+					</div>
+				  </li>
+				  <li class="dropdown">
+					<a href="" class="drop-button">Using property</a><i class="down"></i>
+					<div class="dropdown-content">
+					<a>Who legally administers marital property?</a>
+					<a>Does the law provide for valuation of nonmonetary contributions?</a>
+					<a>Do men and women have equal ownership rights to immovable property?</a>
+					<a>Do sons and daughters have equal rights to inherit assets from their parents?</a>
+					<a>Do female and male surviving spouses have equal rights to inherit assets?</a>
+					
+					</div>
+			  	</li>
+				  <li class="dropdown">
+					<a href="" class="drop-button">Going to court</a><i class="down"></i>
+					<div class="dropdown-content">
+						<a>Does a woman’s testimony carry the same evidentiary weight in court as a man's?</a>
+						<a>Does the law establish an anti-discrimination commission? </a>
+						<a>Does the law mandate legal aid in civil and family matters? </a>
+						<a>Is there a small claims court or a fast-track procedure for small claims?</a>
+						
+					
+					</div>
+				  </li>
+				  <li class="dropdown">
+					<a href="" class="drop-button">Providing incentives to work</a><i class="down"></i>
+					<div class="dropdown-content">
+						<a>Are mothers guaranteed an equivalent position after maternity leave?</a>
+						<a>Does the government support or provide childcare services?</a>
+						<a>Are payments for childcare tax deductible?</a>
+						<a>Are there specific tax deductions or tax credits that are only applicable to men?</a>
+						<a>Is primary education free and compulsory? </a>
+							
+					</div>
+				  </li>
+				  <li class="dropdown">
+					<a href="" class="drop-button">Building credit</a><i class="down"></i>
+					<div class="dropdown-content">
+						<a>Do retailers provide information to private credit bureaus or public credit registries?</a>
+						<a>Do utility companies provide information to private credit bureaus or public credit registries?</a>
+						<a>Does the law prohibit discrimination by creditors on the basis of sex or gender in access to credit?</a>
+						<a>Does the law prohibit discrimination by creditors on the basis of marital status in access to credit?</a>
+						
+					</div>
+				  </li>
+				  <li class="dropdown">
+					<a href="" class="drop-button">Getting a job</a><i class="down"></i>
+					<div class="dropdown-content">
+						<a>Is there paid leave available to women of at least 14 weeks?</a>
+						<a>Do women receive at least 2/3 of their wages for the first 14 weeks or the duration of the leave if it is shorter?</a>
+						<a>What is the percentage of maternity leave benefits paid by the government?</a>
+						<a>What is the difference between leave reserved for women and men relative to leave reserved for women, as a function of who pays?</a>
+						<a>Is there paid parental leave?</a>
+						<a>Does the law mandate equal remuneration for work of equal value?</a>
+						<a>Does the law mandate nondiscrimination based on gender in employment?</a>
+						<a>Is dismissal of pregnant workers prohibited?</a>
+						<a>Can parents work flexibly?</a>
+						<a>Can women work the same night hours as men?</a>
+						<a>Can women work in jobs deemed hazardous, arduous or morally inappropriate in the same way as men? </a>
+						<a>Are women able to work in the same industries as men?</a>
+						<a>Are women able to perform the same tasks at work as men? </a>
+						<a>Are the ages at which men and women can retire with full pension benefits equal? </a>
+						<a>Are the ages at which men and women can retire with partial pension benefits equal?</a>
+						<a>Is the mandatory retirement age for men and women equal?</a>
+					</div>
+				  </li>
+				  <li class="dropdown">
+					<a href="" class="drop-button">Protecting Women from Voilence</a><i class="down"></i>
+					<div class="dropdown-content">
+						<a>Is there legislation specifically addressing domestic violence? If not, are there aggravated penalties for crimes committed against a spouse or family member?</a>
+						<a>Is there legislation on sexual harassment in employment?</a>
+						<a>Is there legislation on sexual harassment in education?</a>
+						<a>Are there criminal penalties for sexual harassment in employment?</a>
+						<a>Are there  civil remedies for sexual harassment in employment?</a>
+							
+					</div>
+			  	</li>
+		</ul>
+	</nav>
+	
+	<div id="spider"><!-- Plotly chart will be drawn inside this DIV --></div>
+	<script>
+	  data = [{
+	  name: 'High income',
+	  type: 'scatterpolar',
+	  r: ['93.35714286', '90.17857143', '74.10714286', '76.78571429', '42.41071429', '78.48214286', '62.32142857', '93.35714286'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  },
+	  {
+	  name: 'Low income',
+	  type: 'scatterpolar',
+	  r: ['86.5862068965517', '75.0689655172413', '65.5172413793103', '53.103448275862', '7.75862068965517', '57.5172413793103', '51.0344827586206', '86.5862068965517'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  },
+	  {
+	  name: 'Lower middle income',
+	  type: 'scatterpolar',
+	  r: ['90.2264150943396', '76.9811320754716', '64.1509433962264', '59.6226415094339', '27.3584905660377', '58.4150943396226', '44.7169811320754', '90.2264150943396'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  },
+	  {
+	  name: 'Upper middle income',
+	  type: 'scatterpolar',
+	  r: ['93.3529411764706', '86.8627450980392', '68.1372549019607', '69.8039215686274', '30.8823529411764', '66.9019607843137', '57.0588235294117', '93.3529411764706'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  }]
+	  region_data = [{
+	  name: 'East Asia & Pacific',
+	  type: 'scatterpolar',
+	  r: ['95.52', '82.6', '65', '48.8', '19', '58.68', '44', '95.52'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  },
+	  {
+	  name: 'Europe & Central Asia',
+	  type: 'scatterpolar',
+	  r: ['99.28', '100', '74', '79.2', '33', '77', '59.2', '99.28'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  },
+	  {
+	  name: 'High income: OECD',
+	  type: 'scatterpolar',
+	  r: ['99.71875', '98.75', '85.9375', '86.25', '52.34375', '90.46875', '75.3125', '99.71875'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  },
+	  {
+	  name: 'Latin America & Caribbean',
+	  type: 'scatterpolar',
+	  r: ['97.09375', '97.5', '67.1875', '76.875', '40.625', '67.75', '60.625', '97.09375'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  },
+	  {
+	  name: 'Middle East & North Africa',
+	  type: 'scatterpolar',
+	  r: ['65.95', '43', '41.25', '59', '20', '46.4', '24', '65.95'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  },
+	  {
+	  name: 'South Asia',
+	  type: 'scatterpolar',
+	  r: ['89.875', '57.5', '75', '45', '9.375', '39.375', '85', '89.875'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  },
+	  {
+	  name: 'Sub-Saharan Africa',
+	  type: 'scatterpolar',
+	  r: ['86.7234042553191', '76', '66.4893617021276', '55.3191489361702', '18.6170212765957', '61.127659574468', '45.9574468085106', '86.7234042553191'],
+	  theta: ['ACCESSING INSTITUTIONS', 'USING PROPERTY', 'GOING TO COURT', 'PROVIDING INCENTIVES TO WORK', 'BUILDING CREDIT', 'GETTING A JOB', 'PROTECTING WOMEN FROM VIOLENCE', 'ACCESSING INSTITUTIONS']
+	  }]
+	  layout = {
+	  polar: {
+		  radialaxis: {
+		  visible: true,
+		  range: [0, 100]
+		  }
+	  },
+	  showlegend: true
+	  }
+	  Plotly.plot("spider", data, layout)
+	  function getData(dataset) {
+		switch (dataset) {
+		  case "data":
+			Plotly.newPlot("spider", data, layout)
+			break;
+		  case "region_data":
+			Plotly.newPlot("spider", region_data, layout)
+			break;
+		  default:
+			Plotly.plot("spider", data, layout)
+			break;
+	}
+		
+	  }
+	</script>
   
-</body>
+	<select id="selDataset" onchange="getData(this.value)">
+	  <option value="data">Income</option>
+	  <option value="region_data">Region</option>
+	</select>
+	
+  </body>
